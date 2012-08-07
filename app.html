@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Just 5 minutes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="scripts/libs/jquery_mobile/jquery.mobile-1.1.1.min.css" />
+	<script src="scripts/libs/jquery-1.7.1.min.js"></script>
+	<script src="scripts/libs/jquery_mobile/jquery.mobile-1.1.1.min.js"></script>
+	<script data-main="scripts/app.js" src="scripts/libs/require.js"></script>
+</head>
+<body>
+	<div data-role="page" id="page-main">
+	
+		<div data-role="header">
+			<h1>Just 5 minutes</h1>
+			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+		</div><!-- TODO: make startpage button -->
+	  
+		<div data-role="content">	
+			<a href="#page-addTask" data-role="button" data-icon="plus">Add Task</a>
+			
+			<p>How many minutes do you have? (range possible)</p>
+			<fieldset data-role="controlgroup" data-type="horizontal">
+		    	<input type="checkbox" name="findTask-cb-5" data-mini="true" id="findTask-cb-5" />
+				<label for="findTask-cb-5">5</label>
+				<input type="checkbox" name="findTask-cb-10" data-mini="true" id="findTask-cb-10" />
+				<label for="findTask-cb-10">10</label>
+				<input type="checkbox" name="findTask-cb-15" data-mini="true" id="findTask-cb-15" />
+				<label for="findTask-cb-15">15</label>
+				<input type="checkbox" name="findTask-cb-30" data-mini="true" id="findTask-cb-30" />
+				<label for="findTask-cb-30">30</label>
+				<input type="checkbox" name="findTask-cb-45" data-mini="true" id="findTask-cb-45" />
+				<label for="findTask-cb-45">45</label>
+				<input type="checkbox" name="findTask-cb-60" data-mini="true" id="findTask-cb-60" />
+				<label for="findTask-cb-60">60</label>
+				<input type="checkbox" name="findTask-cb-61" data-mini="true" id="findTask-cb-61" />
+				<label for="findTask-cb-61">> 60</label>
+		    </fieldset>
+		</div>
+	
+	</div>
+	<div data-role="page" id="page-addTask">
+	
+		<div data-role="header">
+			<h1>Just 5 minutes</h1>
+			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+		</div>
+	  
+		<div data-role="content">	
+			<label for="task-title" class="ui-hidden-accessible">Username:</label>
+			<input type="text" name="task-title" id="task-title" value="" placeholder="Title"/>
+			<p>How many minutes does it take? (range possible)</p>
+			<fieldset data-role="controlgroup" data-type="horizontal">
+		    	<input type="checkbox" name="addTask-cb-5" data-mini="true" id="addTask-cb-5" />
+				<label for="addTask-cb-5">5</label>
+				<input type="checkbox" name="addTask-cb-10" data-mini="true" id="addTask-cb-10" />
+				<label for="addTask-cb-10">10</label>
+				<input type="checkbox" name="addTask-cb-15" data-mini="true" id="addTask-cb-15" />
+				<label for="addTask-cb-15">15</label>
+				<input type="checkbox" name="addTask-cb-30" data-mini="true" id="addTask-cb-30" />
+				<label for="addTask-cb-30">30</label>
+				<input type="checkbox" name="addTask-cb-45" data-mini="true" id="addTask-cb-45" />
+				<label for="addTask-cb-45">45</label>
+				<input type="checkbox" name="addTask-cb-60" data-mini="true" id="addTask-cb-60" />
+				<label for="addTask-cb-60">60</label>
+				<input type="checkbox" name="addTask-cb-61" data-mini="true" id="addTask-cb-61" />
+				<label for="addTask-cb-61">> 60</label>
+		    </fieldset>
+			
+			
+			<a data-role="button" href="#page-main" data-inline="true" data-icon="back">Cancel</a>
+			<a data-role="button" data-inline="true" data-icon="check" data-theme="b" onclick="app.Views.AddTask.addTaskAndChangePage();">Add task</a>
+		</div>
+	
+	</div>
+</body>
+</html>
