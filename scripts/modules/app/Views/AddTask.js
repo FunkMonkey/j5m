@@ -1,50 +1,35 @@
-define(function () {
+define(["TaskManager", "Widgets/CheckboxRange"], function(TaskManager, CheckboxRange) {
     
 	
 	
 	var AddTask = {
 		
-		checkboxes: [],
 		_checkboxTimes: [5, 10, 15, 30, 45, 60, 61],
-		selectMin: null,
-		selectMax: null,
 		
 		/**
 		 * Creates and adds a Task
 		 */
 		addTask: function addTask()
 		{
+			var title = this.taskTitle.value;
+			if(!title)
+			{
+				alert("Please enter a title"); // TODO: make better;
+				return false;
+			}
 			
+			if(this.checkboxRange.selectMin === null)
+			{
+				alert("Please select a time-range"); // TODO: make better;
+				return false;
+			}
+			
+			var checkboxes = this.checkboxRange.checkboxes;
+			var task = new TaskManager.Task(title, checkboxes[this.checkboxRange.selectMin][0]._data, checkboxes[this.checkboxRange.selectMax][0]._data);
+			TaskManager.addTask(task);
+			
+			return true;
 		},
-		
-		/**
-		 * Called when a checkbox is clicked
-		 * 
-		 * @param   {event}   event   DOM event
-		 */
-		_onCheckboxClick: function _onCheckboxClick(event)
-		{
-			var targetIndex = event.target.index;
-			if(this.selectMin !== null && this.selectMin === this.selectMax && targetIndex > this.selectMax)
-			{
-				for(var i = this.selectMin, len = targetIndex; i <= len; ++i)
-				{
-					this.checkboxes[i][0].checked = true;
-					this.checkboxes[i].checkboxradio("refresh");
-					this.selectMax = targetIndex;
-				}
-			}
-			else
-			{
-				for(var i = 0, len = this.checkboxes.length; i < len; ++i)
-				{
-					this.checkboxes[i][0].checked = (i === targetIndex);
-					this.checkboxes[i].checkboxradio("refresh");
-					
-				}
-				this.selectMin = this.selectMax = targetIndex;
-			}
-		}, 
 		
 		
 		/**
@@ -52,15 +37,10 @@ define(function () {
 		 */
 		_onPageInit: function _onPageInit()
 		{
-			for(var i = 0, len = this._checkboxTimes.length; i < len; ++i)
-			{
-				var cb = document.getElementById("addTask-cb-" + this._checkboxTimes[i]);
-				cb.index = i;
-				cb.time = this._checkboxTimes[i];
-				$(cb).bind("click", AddTask._onCheckboxClick.bind(AddTask)); // TODO: find out what sucks here
-				//cb.addEventListener("click", AddTask._onCheckboxClick.bind(AddTask));
-				this.checkboxes.push($(cb));
-			}
+			var container = document.getElementById("addTask-checkboxes");
+			this.checkboxRange = container.checkboxRange = new CheckboxRange(container, this._checkboxTimes);
+			
+			this.taskTitle = document.getElementById("task-title");
 		},
 		
 		/**
@@ -68,6 +48,8 @@ define(function () {
 		 */
 		_onPageBeforeShow: function _onPageBeforeShow()
 		{
+			this.taskTitle.value = "";
+			this.checkboxRange.deselectAll();
 		}, 
 		
 	
@@ -76,18 +58,17 @@ define(function () {
 		 */
 		addTaskAndChangePage: function addTaskAndChangePage()
 		{
-			this.addTask();
-			$.mobile.changePage("#startpage");
+			if(this.addTask())
+				$.mobile.changePage("#page-main");
 			
 			// TODO: show notifications of successfull added task
 		}, 
 		
 	};
 	
+	// TODO: use traditional DOM methods
 	$("#page-addTask").bind("pageinit", AddTask._onPageInit.bind(AddTask));
 	$("#page-addTask").bind("pagebeforeshow", AddTask._onPageBeforeShow.bind(AddTask));
-	
-	document.getElementById("page-addTask").addEventListener("pageinit", AddTask._onPageInit.bind(AddTask), true);
 
     return AddTask;
 });

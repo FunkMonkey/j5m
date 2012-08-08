@@ -15,14 +15,13 @@ requirejs.config({
 $(document).ready(function() {
    // Start the main app logic.
 	requirejs(["TaskManager", "Views/Views"],
-	function(TaskManagerModule, Views) {
+	function(TaskManager, Views) {
 		
 		$.mobile.defaultPageTransition = "none";
 		$.mobile.defaultDialogTransition = 'none'; 
 		
 		window.app = {};
-		window.app.TaskManager = TaskManagerModule.TaskManager;
-		window.app.Task = TaskManagerModule.Task;
+		window.app.TaskManager = TaskManager;
 		window.app.Views = Views;
 	});
 });

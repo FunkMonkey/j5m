@@ -1,7 +1,10 @@
-define(["Views/AddTask"], function(AddTask) {
+define(["Views/Main", "Views/AddTask", "Views/ShowTask"], function(Main, AddTask, ShowTask) {
     
 	var Views = {
-		AddTask: AddTask
+		Main: Main,
+		AddTask: AddTask,
+		ShowTask: ShowTask
+		
 	};
 
     return Views;

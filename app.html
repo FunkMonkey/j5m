@@ -15,13 +15,18 @@
 		<div data-role="header">
 			<h1>Just 5 minutes</h1>
 			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
-		</div><!-- TODO: make startpage button -->
+			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
+		</div>
 	  
-		<div data-role="content">	
-			<a href="#page-addTask" data-role="button" data-icon="plus">Add Task</a>
+		<div data-role="content">
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#page-addTask" data-inline="true" data-mini="true" data-role="button" data-icon="grid">Manage Tasks</a>
+				<a href="#page-addTask" data-inline="true" data-mini="true" data-role="button" data-icon="plus">Add Task</a>
+				
+			</div>
 			
 			<p>How many minutes do you have? (range possible)</p>
-			<fieldset data-role="controlgroup" data-type="horizontal">
+			<fieldset data-role="controlgroup" data-type="horizontal" id="findTask-checkboxes">
 		    	<input type="checkbox" name="findTask-cb-5" data-mini="true" id="findTask-cb-5" />
 				<label for="findTask-cb-5">5</label>
 				<input type="checkbox" name="findTask-cb-10" data-mini="true" id="findTask-cb-10" />
@@ -37,21 +42,28 @@
 				<input type="checkbox" name="findTask-cb-61" data-mini="true" id="findTask-cb-61" />
 				<label for="findTask-cb-61">> 60</label>
 		    </fieldset>
+			
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#page-showTask" data-inline="true" data-role="button" data-icon="search">Get List</a>
+				<a href="#page-showTask" data-inline="true" data-role="button" data-icon="search">Get Task</a>
+			</div>
 		</div>
 	
-	</div>
+	</div><!-- end of #page-main -->
+	
 	<div data-role="page" id="page-addTask">
 	
 		<div data-role="header">
 			<h1>Just 5 minutes</h1>
 			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
 		</div>
 	  
 		<div data-role="content">	
-			<label for="task-title" class="ui-hidden-accessible">Username:</label>
+			<label for="task-title" class="ui-hidden-accessible">Title:</label>
 			<input type="text" name="task-title" id="task-title" value="" placeholder="Title"/>
 			<p>How many minutes does it take? (range possible)</p>
-			<fieldset data-role="controlgroup" data-type="horizontal">
+			<fieldset data-role="controlgroup" data-type="horizontal"  id="addTask-checkboxes">
 		    	<input type="checkbox" name="addTask-cb-5" data-mini="true" id="addTask-cb-5" />
 				<label for="addTask-cb-5">5</label>
 				<input type="checkbox" name="addTask-cb-10" data-mini="true" id="addTask-cb-10" />
@@ -73,6 +85,28 @@
 			<a data-role="button" data-inline="true" data-icon="check" data-theme="b" onclick="app.Views.AddTask.addTaskAndChangePage();">Add task</a>
 		</div>
 	
-	</div>
+	</div><!-- end of #page-addTask -->
+	
+	<div data-role="page" id="page-showTask">
+	
+		<div data-role="header">
+			<h1>Just 5 minutes</h1>
+			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
+		</div>
+	  
+		<div data-role="content">	
+			<h3>You could</h3>
+			
+			<ul data-role="listview" data-inset="true" id="showTask-taskList">
+			</ul>
+			
+			<div data-role="controlgroup" data-type="horizontal">
+				<a data-role="button" href="#page-main" data-inline="true" data-icon="back">Back</a>
+				<a data-role="button" data-inline="true" data-icon="arrow-r" onclick="">more</a>
+			</div>
+		</div>
+	
+	</div><!-- end of #page-showTask -->
 </body>
 </html>

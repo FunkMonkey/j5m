@@ -20,7 +20,10 @@ define(function () {
 	Object.defineProperty(Task.prototype, "constructor", {value: Task});
 	
 	var TaskManager = {
+		Task: Task,
+		
 		tasks: [],
+		
 		
 		/**
 		 * Adds a task
@@ -31,12 +34,21 @@ define(function () {
 		{
 			this.tasks.push(task);
 		},
+		
+		/**
+		 * Returns a random task
+		 * 
+		 * @returns {Task}   Random task
+		 */
+		getRandomTask: function getRandomTask()
+		{
+			return this.tasks[0]; // TODO: make random
+		}, 
+		
 	};
 	
+	// TODO: remove
+	TaskManager.addTask(new Task("Do some stuff", 5, 10));
 	
-
-    return {
-        TaskManager: TaskManager,
-        Task: Task
-    }
+    return TaskManager;
 });
