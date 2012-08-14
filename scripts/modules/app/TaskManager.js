@@ -67,7 +67,7 @@ define(function () {
 		{
 			var self = this;
 			
-			this.db = new Lawnchair("tasks", function(){});
+			this.db = new Lawnchair({name: "tasks", adapter: "dom"}, function(){});
 			this.db.each(function(obj, index){
 					var task = self.Task.createFromJSON(obj);
 					self.addTask(task);
@@ -102,7 +102,44 @@ define(function () {
 		getRandomTask: function getRandomTask()
 		{
 			return this.tasks[0]; // TODO: make random
+		},
+		
+		shuffleArray: function shuffleArray(array) {
+			var tmp, current, top = array.length;
+			
+			if(top) while(--top) {
+				current = Math.floor(Math.random() * (top + 1));
+				tmp = array[current];
+				array[current] = array[top];
+				array[top] = tmp;
+			}
+			
+			return array;
+		},
+		
+		/**
+		 * Returns a list of random tasks
+		 *
+		 * @param   {Number}   min   Minimum time
+		 * @param   {Number}   max   Maximum time
+		 * 
+		 * @returns {Task[]}   List of tasks
+		 */
+		getRandomTaskList: function getRandomTaskList(min, max)
+		{
+			var tmpArray = []
+			for(var i = 0, len = this.tasks.length; i < len; ++i)
+			{
+				var task = this.tasks[i];
+				if(!(min > task.timeMax || max < task.timeMin))
+					tmpArray.push(this.tasks[i]);
+			}
+				
+			this.shuffleArray(tmpArray)
+			
+			return tmpArray;
 		}, 
+		
 		
 	};
 	

@@ -1,4 +1,4 @@
-define(["Widgets/CheckboxRange"], function(CheckboxRange) {
+define(["TaskManager", "Widgets/CheckboxRange", "Views/ShowTask"], function(TaskManager, CheckboxRange, ShowTask) {
     
 	var Main = {
 		
@@ -19,7 +19,41 @@ define(["Widgets/CheckboxRange"], function(CheckboxRange) {
 		_onPageBeforeShow: function _onPageBeforeShow()
 		{
 			this.checkboxRange.deselectAll();
+		},
+		
+		// TODO: make options
+		defaultMin: 5,
+		defaultMax: 61,
+		
+		/**
+		 * Shows tasks based on the given selection
+		 */
+		showTasks: function showTasks()
+		{
+			var min = this.checkboxRange.selectMin;
+			var max = this.checkboxRange.selectMax;
+			
+			if(min == null)
+			{
+				min = 0;
+				max = 6;
+			}
+			
+			var checkboxes = this.checkboxRange.checkboxes;
+			var state = {
+				lastTask: -1,
+				
+				// TODO: make option
+				numShownTasks: 3,
+				tasks: TaskManager.getRandomTaskList(this._checkboxTimes[min], this._checkboxTimes[max])
+			}
+			
+			ShowTask.setState(state);
+			
+			$.mobile.changePage("#page-showTask");
+			
 		}, 
+		
 		
 	};
 	

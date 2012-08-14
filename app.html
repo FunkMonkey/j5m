@@ -46,7 +46,7 @@
 			
 			<div data-role="controlgroup" data-type="horizontal">
 				<a href="#page-showTask" data-inline="true" data-role="button" data-icon="search">Get List</a>
-				<a href="#page-showTask" data-inline="true" data-role="button" data-icon="search">Get Task</a>
+				<a data-inline="true" data-role="button" data-icon="search" onclick="app.Views.Main.showTasks();">Get Task</a>
 			</div>
 		</div>
 	
@@ -104,7 +104,7 @@
 			
 			<div data-role="controlgroup" data-type="horizontal">
 				<a data-role="button" href="#page-main" data-inline="true" data-icon="back">Back</a>
-				<a data-role="button" data-inline="true" data-icon="arrow-r" onclick="">more</a>
+				<a data-role="button" data-inline="true" data-icon="arrow-r" onclick="app.Views.ShowTask.showMore();" id="showTask-more">more</a>
 			</div>
 		</div>
 	
