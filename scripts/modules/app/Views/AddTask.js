@@ -26,7 +26,13 @@ define(["TaskManager", "Widgets/CheckboxRange"], function(TaskManager, CheckboxR
 			
 			var checkboxes = this.checkboxRange.checkboxes;
 			var task = new TaskManager.Task(title, checkboxes[this.checkboxRange.selectMin][0]._data, checkboxes[this.checkboxRange.selectMax][0]._data);
-			TaskManager.addTask(task);
+			
+			try {
+				TaskManager.addTask(task);
+			} catch (e) {
+				alert("There is already a task with the title '" + task.title + "'");
+				return false;
+			}
 			
 			return true;
 		},
