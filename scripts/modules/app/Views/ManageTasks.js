@@ -10,6 +10,7 @@ define(["TaskManager",
 		_onPageInit: function _onPageInit()
 		{
 			this.list = $(document.getElementById("manageTasks-taskList"));
+			this.list[0].addEventListener("click", this.onListClick.bind(this));
 		},
 		
 		/**
@@ -21,14 +22,62 @@ define(["TaskManager",
 		},
 		
 		/**
-		 * Called when an item was clicked
+		 * Called when the list was clicked
 		 * 
 		 * @param   {event}   event   Description
 		 */
-		onItemClick: function onItemClick(event)
+		onListClick: function onListClick(event)
 		{
+			var target = event.target;
+			var task = null;
+			var anonid = null;
 			
+			while(target !== this.list[0])
+			{
+				var currAnonid = target.getAttribute("anonid");
+				if(currAnonid === "manageTasks-editButton" || currAnonid === "manageTasks-deleteButton") {
+					anonid = currAnonid;
+				}
+				
+				if(target.task) {
+					task = target.task;
+					break;
+				}
+				
+				target = target.parentNode;
+			}
+			
+			if(anonid && task)
+			{
+				if(anonid === "manageTasks-editButton")
+					this.editTask(task);
+				else
+					this.deleteTask(task, target);
+			}
+		},
+		
+		/**
+		 * Edits the given task - opens edit page
+		 * 
+		 * @param   {Task}   task   Task to edit
+		 */
+		editTask: function editTask(task)
+		{
+			alert("editing " + task.title);
+		},
+		
+		/**
+		 * Deletes the given task
+		 * 
+		 * @param   {Task}      task       Task to delete
+		 * @param   {element}   listitem   Listitem of the according task
+		 */
+		deleteTask: function deleteTask(task, listitem)
+		{
+			alert("deleting " + task.title);
 		}, 
+		
+		
 		
 		
 		/**
@@ -42,21 +91,21 @@ define(["TaskManager",
 			{
 				var task = TaskManager.tasks[i];
 				
+				
 				var itemCode = '<li>' +
 				                 '<div class="ui-grid-a">' +
 								   '<div class="ui-block-a" style="width:70%">' + task.title + '</div>' +
 								   '<div class="ui-block-b" style="width:30%; text-align:right;" >' + 
-				                       '<a anonid="manageTasks-editButton" class="manageTasks-editButton" href="index.html" data-role="button" data-theme="none" data-corners="false" data-shadow="false" data-icon="gear" data-inline="true" data-iconpos="notext"></a>' + 
-				                       '<a anonid="manageTasks-deleteButton" class="manageTasks-deleteButton" href="index.html" data-role="button" data-theme="none" data-corners="false" data-shadow="false" data-icon="delete" data-inline="true" data-iconpos="notext"></a>' + 
+				                       '<a anonid="manageTasks-editButton" class="manageTasks-editButton" data-role="button" data-theme="none" data-corners="false" data-shadow="false" data-icon="gear" data-inline="true" data-iconpos="notext"></a>' + 
+				                       '<a anonid="manageTasks-deleteButton" class="manageTasks-deleteButton" data-role="button" data-theme="none" data-corners="false" data-shadow="false" data-icon="delete" data-inline="true" data-iconpos="notext"></a>' + 
 								   '</div>' +
 								 '</div>' +
 								'</li>';
 				
-				var item = this.list.append(itemCode);
+				var item = $(itemCode).appendTo(this.list);
 				item.trigger("create");
 				
-				
-				item.task = task;
+				item[0].task = task;
 			}
 			
 			this.list.listview("refresh");
