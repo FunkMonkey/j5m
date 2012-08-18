@@ -5,23 +5,28 @@
 	<title>Just 5 minutes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="scripts/libs/jquery_mobile/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="stylesheets/app.css" />
 	<script src="scripts/libs/jquery-1.7.1.min.js"></script>
 	<script src="scripts/libs/jquery_mobile/jquery.mobile-1.1.1.min.js"></script>
 	<script src="scripts/libs/lawnchair/lawnchair-0.6.1.js"></script>
 	<script src="scripts/libs/require.js" data-main="scripts/app.js"></script>
 </head>
 <body>
+	<!-- =======================================================
+			page: main
+		 ======================================================= -->
 	<div data-role="page" id="page-main">
 	
+		<!-- header -->
 		<div data-role="header">
 			<h1>Just 5 minutes</h1>
 			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
-		</div>
+		</div><!-- end of header -->
 	  
 		<div data-role="content">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#page-addTask" data-inline="true" data-mini="true" data-role="button" data-icon="grid">Manage Tasks</a>
+				<a href="#page-manageTasks" data-inline="true" data-mini="true" data-role="button" data-icon="grid">Manage Tasks</a>
 				<a href="#page-addTask" data-inline="true" data-mini="true" data-role="button" data-icon="plus">Add Task</a>
 				
 			</div>
@@ -52,13 +57,17 @@
 	
 	</div><!-- end of #page-main -->
 	
+	<!-- =======================================================
+			page: addTask
+		 ======================================================= -->
 	<div data-role="page" id="page-addTask">
 	
+		<!-- header -->
 		<div data-role="header">
 			<h1>Just 5 minutes</h1>
 			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
-		</div>
+		</div><!-- end of header -->
 	  
 		<div data-role="content">	
 			<label for="task-title" class="ui-hidden-accessible">Title:</label>
@@ -88,13 +97,17 @@
 	
 	</div><!-- end of #page-addTask -->
 	
+	<!-- =======================================================
+			page: showTask
+		 ======================================================= -->
 	<div data-role="page" id="page-showTask">
 	
+		<!-- header -->
 		<div data-role="header">
 			<h1>Just 5 minutes</h1>
 			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
-		</div>
+		</div><!-- end of header -->
 	  
 		<div data-role="content">	
 			<h3>You could</h3>
@@ -106,6 +119,25 @@
 				<a data-role="button" href="#page-main" data-inline="true" data-icon="back">Back</a>
 				<a data-role="button" data-inline="true" data-icon="arrow-r" onclick="app.Views.ShowTask.showMore();" id="showTask-more">more</a>
 			</div>
+		</div>
+	
+	</div><!-- end of #page-showTask -->
+	
+	<!-- =======================================================
+			page: manageTasks
+		 ======================================================= -->
+	<div data-role="page" id="page-manageTasks">
+		
+		<!-- header -->
+		<div data-role="header">
+			<h1>Just 5 minutes</h1>
+			<a href="#page-main" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
+		</div><!-- end of header -->
+	  
+		<div data-role="content">	
+			<ul data-role="listview" data-inset="true" data-filter="true" id="manageTasks-taskList">
+			</ul>
 		</div>
 	
 	</div><!-- end of #page-showTask -->
