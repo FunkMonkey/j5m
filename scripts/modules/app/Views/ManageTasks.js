@@ -74,7 +74,27 @@ define(["TaskManager",
 		 */
 		deleteTask: function deleteTask(task, listitem)
 		{
-			alert("deleting " + task.title);
+			var self = this;
+			
+			this.list.simpledialog({
+				'mode' : 'bool',
+				'prompt' : 'Do you really want to delete the task?', // TODO: localize
+				'useModal': true,
+				'buttons' : {
+				  'Yes, do it!': { // TODO: localize
+					click: function () {
+						TaskManager.removeTask(task);
+						$(listitem).remove();
+					}
+				  },
+				  'No, cancel': { // TODO: localize
+					click: function () {
+					},
+					icon: "delete",
+					theme: "c"
+				  }
+				}
+			})
 		}, 
 		
 		

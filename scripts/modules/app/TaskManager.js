@@ -95,6 +95,25 @@ define(function () {
 		},
 		
 		/**
+		 * Removes the given task from the manager
+		 * 
+		 * @param   {Task}   task   Task to remove
+		 */
+		removeTask: function removeTask(task)
+		{
+			for(var i = 0, len = this.tasks.length; i < len; ++i)
+			{
+				if(this.tasks[i] === task)
+				{
+					this.tasks.splice(i, 1);
+					this.db.remove(task.title);
+					break;
+				}
+			}
+		}, 
+		
+		
+		/**
 		 * Returns a random task
 		 * 
 		 * @returns {Task}   Random task
