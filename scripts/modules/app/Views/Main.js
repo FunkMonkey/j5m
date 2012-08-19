@@ -44,7 +44,7 @@ define(["TaskManager", "Widgets/CheckboxRange", "Views/ShowTask"], function(Task
 				lastTask: -1,
 				
 				// TODO: make option
-				numShownTasks: 3,
+				numShownTasks: 1,
 				tasks: TaskManager.getRandomTaskList(this._checkboxTimes[min], this._checkboxTimes[max])
 			}
 			

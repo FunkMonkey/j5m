@@ -1,4 +1,13 @@
 
+/* setting a max-width for desktop browsers */
+@media only screen and (min-device-width : 768px) {
+	
+	div[data-role=content] {
+		max-width: 20em;
+	}
+}
+
+
 .manageTasks-editButton .ui-btn-inner,
 .manageTasks-deleteButton .ui-btn-inner
 {
@@ -8,3 +17,5 @@
 .manageTasks-deleteButton {
 	margin-right: 0 !important;
 }
+
+
