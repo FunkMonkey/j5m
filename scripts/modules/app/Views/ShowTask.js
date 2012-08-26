@@ -17,8 +17,13 @@ define(["TaskManager"], function(TaskManager) {
 		 */
 		_onPageBeforeShow: function _onPageBeforeShow()
 		{
+			this.lastTask = -1;
+			this.tasks = TaskManager.getRandomTaskList(parseInt($.mobile.pageData.min), parseInt($.mobile.pageData.max));
+			this.numShownTasks = parseInt($.mobile.pageData.numShownTasks);
 			this.showMore();
 		},
+		
+		lastTask: -1,
 		
 		/**
 		 * Shows more tasks
@@ -27,7 +32,7 @@ define(["TaskManager"], function(TaskManager) {
 		{
 			this.list.empty();
 			
-			if(this.state.tasks.length == 0)
+			if(this.tasks.length == 0)
 			{
 				var item = document.createElement("li");
 				item.textContent = "Sorry, there is task for the given time range!"
@@ -36,18 +41,18 @@ define(["TaskManager"], function(TaskManager) {
 			}
 			else
 			{
-				var range = this.state.lastTask + this.state.numShownTasks + 1;
+				var range = this.lastTask + this.numShownTasks + 1;
 			
-				for(var i = this.state.lastTask + 1, len = this.state.tasks.length; i < len && i < range ; ++i)
+				for(var i = this.lastTask + 1, len = this.tasks.length; i < len && i < range ; ++i)
 				{
 					var item = document.createElement("li");
-					item.textContent = this.state.tasks[i].title;
+					item.textContent = this.tasks[i].title;
 					this.list[0].appendChild(item);
 				}
 				
-				this.state.lastTask += this.state.numShownTasks;
+				this.lastTask += this.numShownTasks;
 				
-				if(this.state.lastTask + 1 < this.state.tasks.length)
+				if(this.lastTask + 1 < this.tasks.length)
 					this.moreButton.removeClass('ui-disabled');
 				else
 					this.moreButton.addClass('ui-disabled');

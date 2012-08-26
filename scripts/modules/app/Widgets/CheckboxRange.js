@@ -67,6 +67,30 @@ define(function(){
 		},
 		
 		/**
+		 * Selects from index "from" to index "to"
+		 * 
+		 * @param   {Number}   from   
+		 * @param   {Number}   to     
+		 */
+		selectFromTo: function selectFromTo(from, to)
+		{
+			if(to < from)
+				throw new Error("To < from");
+			
+			for(var i = 0, len = this.checkboxes.length; i < len; ++i)
+			{
+				this.checkboxes[i][0].checked = (i >= from && i <= to) ? true : false;
+				this.checkboxes[i].checkboxradio("refresh");
+				this.selectMin = null;
+				this.selectMax = null;
+			}
+			
+			this.selectMin = from;
+			this.selectMax = to;
+		}, 
+		
+		
+		/**
 		 * Deselects all checkboxes
 		 */
 		deselectAll: function deselectAll()
@@ -75,9 +99,10 @@ define(function(){
 			{
 				this.checkboxes[i][0].checked = false;
 				this.checkboxes[i].checkboxradio("refresh");
-				this.selectMin = null;
-				this.selectMax = null;
 			}
+			
+			this.selectMin = null;
+			this.selectMax = null;
 		}, 
 		
 	};

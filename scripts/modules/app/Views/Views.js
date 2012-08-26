@@ -1,15 +1,23 @@
 define(["Views/Main",
-		"Views/AddTask",
+		"Views/AddOrEditTask",
 		"Views/ShowTask",
 		"Views/ManageTasks"],
-	   function(Main, AddTask, ShowTask, ManageTasks) {
+	   function(Main, AddOrEditTask, ShowTask, ManageTasks) {
     
 	var Views = {
 		Main: Main,
-		AddTask: AddTask,
+		AddOrEditTask: AddOrEditTask,
 		ShowTask: ShowTask,
 		ManageTasks: ManageTasks
 	};
+	
+	// setting page data
+	$(document).bind("pagebeforechange", function( event, data ) {
+		$.mobile.pageData = (data && data.options && data.options.pageData)
+							   ? data.options.pageData
+							   : null;
+	 });
+
 
     return Views;
 });

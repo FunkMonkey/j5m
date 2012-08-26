@@ -5,8 +5,9 @@ define(function () {
 	 *
 	 * @constructor
 	 */
-	function Task(title, timeMin, timeMax, date, tags)
+	function Task(id, title, timeMin, timeMax, date, tags)
 	{
+		this.id = id;
 		this.title = title;
 		this.timeMin = timeMin;
 		this.timeMax = timeMax;
@@ -23,7 +24,8 @@ define(function () {
 	 */
 	Task.createFromJSON = function createFromJSON(jsonObj)
 	{
-		return new Task( jsonObj.title,
+		return new Task( jsonObj.id,
+						 jsonObj.title,
 						 jsonObj.timeMin,
 						 jsonObj.timeMax,
 						 new Date(jsonObj.dateAdded),
@@ -40,6 +42,7 @@ define(function () {
 		toJSON: function toJSON()
 		{
 			return {
+				id: this.id,
 				title: this.title,
 				timeMin: this.timeMin,
 				timeMax: this.timeMax,
@@ -60,6 +63,10 @@ define(function () {
 		
 		db: null,
 		
+		options: {
+			maxID: 0,
+		},
+		
 		/**
 		 * Initializes the TaskManager
 		 */
@@ -69,8 +76,14 @@ define(function () {
 			
 			this.db = new Lawnchair({name: "tasks", adapter: "dom"}, function(){});
 			this.db.each(function(obj, index){
-					var task = self.Task.createFromJSON(obj);
-					self.addTask(task);
+				
+					// duck-type-checking whether it is the options object
+				    if(obj.maxID)
+						self.options = obj;
+					else {
+						var task = self.Task.createFromJSON(obj);
+						self.tasks.push(task);
+					}
 				})
 		}, 
 		
@@ -79,20 +92,52 @@ define(function () {
 		 * 
 		 * @param   {Task}   task   Task to add
 		 */
-		addTask: function addTask(task)
+		addTask: function addTask(title, timeMin, timeMax, date, tags)
 		{
-			for (var i=0; i < this.tasks.length; i++) {
-				if(this.tasks[i].title == task.title)
-					throw new Error("Task with title '" + task.title + "' already exists!");
-			}
+			var task = new Task(this.options.maxID + 1, title, timeMin, timeMax, date, tags)
+			
+			this.options.maxID++;
+			this.options.key = "options";
+			this.db.save(this.options);
 			
 			this.tasks.push(task);
 			
 			// saving the task to the DB
-			var json = task.toJSON();
-			task.key = task.title;
-			this.db.save(task);
+			this.saveTask(task);
 		},
+		
+		/**
+		 * Adds a task
+		 * 
+		 * @param   {Task}   task   Task to add
+		 */
+		editTask: function addTask(task, title, timeMin, timeMax, date, tags)
+		{
+			task.title = title;
+			task.timeMin = timeMin;
+			task.timeMax = timeMax;
+			task.tags = tags;
+			
+			this.options.maxID++;
+			this.options.key = "options";
+			this.db.save(this.options);
+			
+			// saving the task to the DB
+			this.saveTask(task);
+		},
+		
+		/**
+		 * Saves the given task to the DB
+		 * 
+		 * @param   {Task}   task   Task to save
+		 */
+		saveTask: function saveTask(task)
+		{
+			var json = task.toJSON();
+			json.key = json.id;
+			this.db.save(json);
+		}, 
+		
 		
 		/**
 		 * Removes the given task from the manager
@@ -106,7 +151,7 @@ define(function () {
 				if(this.tasks[i] === task)
 				{
 					this.tasks.splice(i, 1);
-					this.db.remove(task.title);
+					this.db.remove(task.id);
 					break;
 				}
 			}
@@ -122,6 +167,27 @@ define(function () {
 		{
 			return this.tasks[0]; // TODO: make random
 		},
+		
+		/**
+		 * Returns a task by the given id
+		 * 
+		 * @param   {Number}   id   ID to search for
+		 * 
+		 * @returns {Task}   Return task
+		 */
+		getTaskByID: function getTaskByID(id)
+		{
+			for(var i = 0, len = this.tasks.length; i < len; ++i)
+			{
+				if(this.tasks[i].id === id)
+				{
+					return this.tasks[i];
+				}
+			}
+			
+			return null;
+		}, 
+		
 		
 		shuffleArray: function shuffleArray(array) {
 			var tmp, current, top = array.length;

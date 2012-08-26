@@ -63,7 +63,7 @@ define(["TaskManager",
 		 */
 		editTask: function editTask(task)
 		{
-			alert("editing " + task.title);
+			$.mobile.changePage("#page-addOrEditTask?mode=edit&taskID=" + task.id);
 		},
 		
 		/**
@@ -76,19 +76,24 @@ define(["TaskManager",
 		{
 			var self = this;
 			
-			this.list.simpledialog({
-				'mode' : 'bool',
-				'prompt' : 'Do you really want to delete the task?', // TODO: localize
-				'useModal': true,
-				'buttons' : {
-				  'Yes, do it!': { // TODO: localize
-					click: function () {
-						TaskManager.removeTask(task);
-						$(listitem).remove();
+			// working around a simplelist bug
+			this.currTask = task;
+			this.currListitem = listitem;
+			
+			this.list.simpledialog2({
+				mode: 'button',
+				headerText: 'Delete task?',
+				headerClose: true,
+				buttonPrompt: 'Do you really want to delete the task?',
+				buttons : {
+				  'Yes, do it': {
+					click: function () { 
+						TaskManager.removeTask(self.currTask);
+						$(self.currListitem).remove();
 					}
 				  },
-				  'No, cancel': { // TODO: localize
-					click: function () {
+				  'Cancel': {
+					click: function () { 
 					},
 					icon: "delete",
 					theme: "c"

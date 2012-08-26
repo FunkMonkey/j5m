@@ -10,7 +10,8 @@
 	
 	<script src="scripts/libs/jquery-1.7.1.min.js"></script>
 	<script src="scripts/libs/jquery_mobile/jquery.mobile-1.1.1.min.js"></script>
-	<script src="scripts/libs/jquery_mobile/jquery.mobile.simpledialog.min.js"></script>
+	<script src="scripts/libs/jquery_mobile/jquery.mobile.simpledialog2.min.js"></script>
+	<script src="scripts/libs/jquery_mobile/jqm.page.params.js"></script>
 	<script src="scripts/libs/lawnchair/lawnchair-0.6.1.js"></script>
 	<script src="scripts/libs/require.js" data-main="scripts/app.js"></script>
 </head>
@@ -30,7 +31,7 @@
 		<div data-role="content">
 			<div data-role="controlgroup" data-type="horizontal">
 				<a href="#page-manageTasks" data-inline="true" data-mini="true" data-role="button" data-icon="grid">Manage Tasks</a>
-				<a href="#page-addTask" data-inline="true" data-mini="true" data-role="button" data-icon="plus">Add Task</a>
+				<a href="#page-addOrEditTask?mode=add" data-inline="true" data-mini="true" data-role="button" data-icon="plus">Add Task</a>
 				
 			</div>
 			
@@ -61,9 +62,9 @@
 	</div><!-- end of #page-main -->
 	
 	<!-- =======================================================
-			page: addTask
+			page: addOrEditTask
 		 ======================================================= -->
-	<div data-role="page" id="page-addTask">
+	<div data-role="page" id="page-addOrEditTask">
 	
 		<!-- header -->
 		<div data-role="header">
@@ -74,31 +75,31 @@
 	  
 		<div data-role="content">	
 			<label for="task-title" class="ui-hidden-accessible">Title:</label>
-			<input type="text" name="task-title" id="task-title" value="" placeholder="Title"/>
+			<input type="text" name="task-title" id="addOrEditTask-taskTitle" value="" placeholder="Title"/>
 			<p>How many minutes does it take? (range possible)</p>
-			<fieldset data-role="controlgroup" data-type="horizontal"  id="addTask-checkboxes">
-		    	<input type="checkbox" name="addTask-cb-5" data-mini="true" id="addTask-cb-5" />
-				<label for="addTask-cb-5">5</label>
-				<input type="checkbox" name="addTask-cb-10" data-mini="true" id="addTask-cb-10" />
-				<label for="addTask-cb-10">10</label>
-				<input type="checkbox" name="addTask-cb-15" data-mini="true" id="addTask-cb-15" />
-				<label for="addTask-cb-15">15</label>
-				<input type="checkbox" name="addTask-cb-30" data-mini="true" id="addTask-cb-30" />
-				<label for="addTask-cb-30">30</label>
-				<input type="checkbox" name="addTask-cb-45" data-mini="true" id="addTask-cb-45" />
-				<label for="addTask-cb-45">45</label>
-				<input type="checkbox" name="addTask-cb-60" data-mini="true" id="addTask-cb-60" />
-				<label for="addTask-cb-60">60</label>
-				<input type="checkbox" name="addTask-cb-61" data-mini="true" id="addTask-cb-61" />
-				<label for="addTask-cb-61">> 60</label>
+			<fieldset data-role="controlgroup" data-type="horizontal"  id="addOrEditTask-checkboxes">
+		    	<input type="checkbox" name="addOrEditTask-cb-5" data-mini="true" id="addOrEditTask-cb-5" />
+				<label for="addOrEditTask-cb-5">5</label>
+				<input type="checkbox" name="addOrEditTask-cb-10" data-mini="true" id="addOrEditTask-cb-10" />
+				<label for="addOrEditTask-cb-10">10</label>
+				<input type="checkbox" name="addOrEditTask-cb-15" data-mini="true" id="addOrEditTask-cb-15" />
+				<label for="addOrEditTask-cb-15">15</label>
+				<input type="checkbox" name="addOrEditTask-cb-30" data-mini="true" id="addOrEditTask-cb-30" />
+				<label for="addOrEditTask-cb-30">30</label>
+				<input type="checkbox" name="addOrEditTask-cb-45" data-mini="true" id="addOrEditTask-cb-45" />
+				<label for="addOrEditTask-cb-45">45</label>
+				<input type="checkbox" name="addOrEditTask-cb-60" data-mini="true" id="addOrEditTask-cb-60" />
+				<label for="addOrEditTask-cb-60">60</label>
+				<input type="checkbox" name="addOrEditTask-cb-61" data-mini="true" id="addOrEditTask-cb-61" />
+				<label for="addOrEditTask-cb-61">> 60</label>
 		    </fieldset>
 			
 			
-			<a data-role="button" href="#page-main" data-inline="true" data-icon="back">Cancel</a>
-			<a data-role="button" data-inline="true" data-icon="check" data-theme="b" onclick="app.Views.AddTask.addTaskAndChangePage();">Add task</a>
+			<a data-role="button" data-inline="true" data-icon="back" onclick="app.Views.AddOrEditTask.cancel();">Cancel</a>
+			<a id="addOrEditTask-submit" data-role="button" data-inline="true" data-icon="check" data-theme="b" onclick="app.Views.AddOrEditTask.addTaskAndChangePage();">Add task</a>
 		</div>
 	
-	</div><!-- end of #page-addTask -->
+	</div><!-- end of #page-addOrEditTask -->
 	
 	<!-- =======================================================
 			page: showTask

@@ -39,18 +39,7 @@ define(["TaskManager", "Widgets/CheckboxRange", "Views/ShowTask"], function(Task
 				max = 6;
 			}
 			
-			var checkboxes = this.checkboxRange.checkboxes;
-			var state = {
-				lastTask: -1,
-				
-				// TODO: make option
-				numShownTasks: 1,
-				tasks: TaskManager.getRandomTaskList(this._checkboxTimes[min], this._checkboxTimes[max])
-			}
-			
-			ShowTask.setState(state);
-			
-			$.mobile.changePage("#page-showTask");
+			$.mobile.changePage("#page-showTask?min=" + this._checkboxTimes[min] + "&max=" + this._checkboxTimes[max] + "&numShownTasks=1");
 			
 		}, 
 		
