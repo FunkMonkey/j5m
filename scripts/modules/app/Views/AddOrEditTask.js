@@ -97,7 +97,7 @@ define(["TaskManager", "Widgets/CheckboxRange"], function(TaskManager, CheckboxR
 		addTaskAndChangePage: function addTaskAndChangePage()
 		{
 			if(this.addTask())
-				$.mobile.changePage("#page-main");
+				$.mobile.changePage(this.prevPage);
 			
 			// TODO: show notifications of successfull added task
 		}, 
