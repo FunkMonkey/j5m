@@ -59,7 +59,7 @@ define(["TaskManager"], function(TaskManager) {
 			}
 			
 			
-			this.list.listview ("refresh")
+			this.list.listview ("refresh", true)
 		}, 
 		
 		

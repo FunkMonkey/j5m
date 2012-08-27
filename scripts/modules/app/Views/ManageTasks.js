@@ -133,7 +133,7 @@ define(["TaskManager",
 				item[0].task = task;
 			}
 			
-			this.list.listview("refresh");
+			this.list.listview("refresh", true);
 		}, 
 		
 	};
