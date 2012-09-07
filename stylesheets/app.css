@@ -18,4 +18,60 @@
 	margin-right: 0 !important;
 }
 
+#findTask-howMuchTime {
+	margin-top: 1em;
+}
 
+#showTask-endText {
+	text-align: right;
+}
+
+#page-showTask {
+	position: relative;
+}
+
+#showTask-controls {
+	position: absolute;
+	bottom: 0em;
+	left: 1em;
+	right: 1em;
+}
+
+.checkbox-range .ui-btn .ui-icon
+{
+	display: none;
+}
+
+.checkbox-range .ui-btn 
+{
+	text-align: center;
+	font-size: smaller;
+}
+
+.checkbox-range .ui-checkbox .ui-mini.ui-btn-icon-left .ui-btn-inner,
+.checkbox-range .ui-radio .ui-mini.ui-btn-icon-left .ui-btn-inner {
+    padding-left: 5px;
+}
+
+
+.ui-grid-e, .ui-grid-f { overflow: hidden; }
+.ui-block-f, .ui-block-g { margin: 0; padding: 0; border: 0; float: left; min-height: 1px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
+
+.ui-grid-e .ui-block-a,
+.ui-grid-e .ui-block-b,
+.ui-grid-e .ui-block-c,
+.ui-grid-e .ui-block-d,
+.ui-grid-e .ui-block-e,
+.ui-grid-e .ui-block-f { width: 16.66%; }
+.ui-grid-e > :nth-child(n) { width: 16.666%; }
+.ui-grid-e .ui-block-a { clear: left; }
+
+.ui-grid-f .ui-block-a,
+.ui-grid-f .ui-block-b,
+.ui-grid-f .ui-block-c,
+.ui-grid-f .ui-block-d,
+.ui-grid-f .ui-block-e,
+.ui-grid-f .ui-block-f,
+.ui-grid-f .ui-block-g { width: 14.28%; }
+.ui-grid-f > :nth-child(n) { width: 14.285; }
+.ui-grid-f .ui-block-a { clear: left; }

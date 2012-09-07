@@ -1,0 +1,108 @@
+
+@font-face {
+    font-family: 'distant_galaxyregular';
+    src: url('distgrg_-webfont.eot');
+    src: url('distgrg_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('distgrg_-webfont.woff') format('woff'),
+         url('distgrg_-webfont.ttf') format('truetype'),
+         url('distgrg_-webfont.svg#distant_galaxyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.ctrlgroupbutton-left {
+	border-bottom-right-radius: 0em !important;
+    border-top-right-radius: 0em !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.ctrlgroupbutton-middle {
+	border-bottom-left-radius: 0em !important;
+    border-top-left-radius: 0em !important;
+	border-bottom-right-radius: 0em !important;
+    border-top-right-radius: 0em !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	border-left: 0 !important;
+}
+
+.ctrlgroupbutton-right {
+	border-bottom-left-radius: 0em !important;
+    border-top-left-radius: 0em !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	border-left: 0 !important;
+}
+
+#findTask-howMuchTime,
+#showTask-beginText{
+	background-image: url(yoda_full_head.png);
+	
+	padding-left: 135px;
+	padding-top: 10px;
+	
+	/*background-attachment: fixed;*/
+	background-repeat: no-repeat;
+	background-position: top left;
+	
+	min-height: 5em;
+	margin-bottom: 1em;
+}
+
+/*#page-showTask.ui-page {*/
+/*	background-image: url(yoda.png), -moz-linear-gradient(to bottom, #504736, #2f2820);*/
+/*	*/
+/*	/*background-attachment: fixed;*/*/
+/*	background-repeat: no-repeat;*/
+/*	background-position: bottom right;*/
+}
+
+#showTask-controls {
+	margin-top: 2em;
+}
+
+
+.ui-page {
+	background-image: -moz-linear-gradient(to bottom, #504736, #2f2820);
+	
+	font-family: 'distant_galaxyregular', sans-serif;
+}
+
+.ui-header .ui-title {
+	font-family: 'distant_galaxyregular', sans-serif;
+	color: #fffdf1;
+	margin: 0.6em 20% 0.8em;
+}
+
+.ui-page.ui-body-c,
+.ui-page.ui-overlay-c {
+    color: #FFF;
+    text-shadow: none;
+}
+
+.ui-content {
+	color: #fffdf1;
+}
+
+.ui-content .ui-btn,
+.ui-content .ui-li{
+	background-image: -moz-linear-gradient(to top, #c3b492, #efe4b7);
+	font-family: 'distant_galaxyregular', sans-serif;
+	font-weight: normal;
+	text-shadow: none;
+	border: 1px solid #271918;
+	color: #38261c;
+}
+
+/*
+.ui-corner-left {
+    border-bottom-left-radius: 0.0em;
+    border-top-left-radius: 0.0em;
+}
+
+.ui-corner-right {
+    border-bottom-right-radius: 0.0em;
+    border-top-right-radius: 0.0em;
+}*/
