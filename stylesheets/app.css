@@ -30,6 +30,23 @@
 	position: relative;
 }
 
+#page-showTask .ui-content {
+	position: absolute;
+	top: 42px;
+	bottom: 0;
+	width: 100%;
+	padding: 0;
+}
+
+#page-showTask .top-content {
+	position: absolute;
+	top: 0px;
+	bottom: 57px;
+	width: 100%;
+	padding: 1em;
+	-moz-box-sizing: border-box;
+}
+
 #showTask-controls {
 	position: absolute;
 	bottom: 0em;

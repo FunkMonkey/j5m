@@ -153,24 +153,26 @@
 			<a href="#page-settings" data-icon="gear" data-iconpos="notext">Settings</a>
 		</div><!-- end of header -->
 	  
-		<div data-role="content">	
-			<div id="showTask-beginText">Do or do not. There is no try!<br \>Use the force to ...</div>
-			
-			<ul data-role="listview" data-inset="true" id="showTask-taskList">
-			</ul>
-			
-			<div id="showTask-endText">... you must!</div>
-			
-			<div id="showTask-controls" class="ui-grid-a">
-				<div class="ui-block-a">
-					<a class="ctrlgroupbutton-left" data-role="button" href="#page-main" data-icon="back">Back</a>
-				</div>
-				<div class="ui-block-b">
-					<a class="ctrlgroupbutton-right" data-role="button" data-icon="arrow-r" onclick="app.Views.ShowTask.showMore();" id="showTask-more">more</a>
-				</div>
+		<div data-role="content">
+			<div class="top-content">
+				<div id="showTask-beginText">Do or do not. There is no try!<br \>Use the force to ...</div>
+				
+				<ul data-role="listview" data-inset="true" id="showTask-taskList">
+				</ul>
+				
+				<div id="showTask-endText">..., you must!</div>
+				
 				
 			</div>
-			
+			<div id="showTask-controls" class="ui-grid-a">
+					<div class="ui-block-a">
+						<a class="ctrlgroupbutton-left" data-role="button" href="#page-main" data-icon="back">Back</a>
+					</div>
+					<div class="ui-block-b">
+						<a class="ctrlgroupbutton-right" data-role="button" data-icon="arrow-r" onclick="app.Views.ShowTask.showMore();" id="showTask-more">more</a>
+					</div>
+					
+				</div>
 		</div>
 	
 	</div><!-- end of #page-showTask -->
