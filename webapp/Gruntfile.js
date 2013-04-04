@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 	
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-typescript');
 	
 	// Project configuration.
@@ -15,6 +16,12 @@ module.exports = function(grunt) {
 					sourcemap: true,
 					declaration: false
 				}
+			}
+		},
+		watch:{
+			typescript: {
+				files: [ '<%= typescript.base.src %>' ],  //<- this watch all files (even sub-folders)
+				tasks: ['typescript']
 			}
 		},
 	});
