@@ -1,14 +1,30 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="j5m">
 	<head>
-	<script src="libs/angular.min.js"></script>
+		<title>Just 5 Minutes</title>
+		
+
 	</head>
-	<body>
-		<div>
-			<label>Name:</label>
-			<input type="text" ng-model="yourName" placeholder="Enter a name here">
-			<hr>
-			<h1>Hello {{yourName}}!</h1>
+	<body ng-controller="MainCtrl" ng-switch on="currentPage">
+
+		<p>The food is {{spice}} spicy!</p>
+
+		<div ng-switch-when="1">
+			<p>This is page 1</p>
 		</div>
+		<div ng-switch-when="2">
+			<p>This is page 2</p>
+			<button ng-click="changePage()">Change</button>
+		</div>
+		<div ng-switch-when="3">
+			<p>This is page 3</p>
+		</div>
+		
+		
+		<!-- scripts -->
+		<script src="libs/angular.min.js"></script>
+		<script src="scripts/js/app.js"></script>
 	</body>
+
+
 </html>
