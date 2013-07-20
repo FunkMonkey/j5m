@@ -8,10 +8,12 @@
 	</head>
 	<body ng-controller="Main" ng-switch on="currentPage">
 
-		<p>The food is {{spice}} spicy!</p>
+		<div>{{"HEADER" | translate}}</div>
 
 		<div ng-controller="Start" ng-switch-when="Start">
-			<p>This is page Home</p>
+			<button>{{"ADD_TASK" | translate }}</button>
+			<span>{{"TAGS" | translate }}:</span>
+			<input type="edit"></input>
 		</div>
 		<div ng-switch-when="Tasks">
 			<p>This is page Tasks</p>
@@ -24,6 +26,7 @@
 		
 		<!-- scripts -->
 		<script src="components/angular/angular.min.js"></script>
+		<script src="components/angular-translate/angular-translate.min.js"></script>
 		<script src="scripts/js/TaskManager.js"></script>
 		<script src="scripts/js/app.js"></script>
 	</body>

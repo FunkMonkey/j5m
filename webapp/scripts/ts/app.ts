@@ -17,14 +17,20 @@ module j5m {
 	 
 	angular.module('j5m.filters', []);
 	 
-	angular.module('j5m', ['j5m.services', 'j5m.directives', 'j5m.filters']).
-		run(function() {
+	angular.module('j5m', ['j5m.services', 'j5m.directives', 'j5m.filters', 'pascalprecht.translate']).
+		config(function($translateProvider: any) {
 			// This is effectively part of the main method initialization code
+			$translateProvider.translations('en_EN', {
+				"HEADER": "just 5 mintes",
+				"ADD_TASK": "Add Task"
+			});
+
+			$translateProvider.preferredLanguage('en_EN');
 		}).
 		controller("Main", function($scope, TaskManager: services.TaskManager){
-			$scope.currentPage = "Tasks";
+			$scope.currentPage = "Start";
 			$scope.changePage = function() {
-				$scope.currentPage = "Start"; 
+				$scope.currentPage = "Tasks"; 
 			}
 		}).
 		controller("Start", function($scope, TaskManager: services.TaskManager){
