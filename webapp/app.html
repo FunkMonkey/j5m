@@ -1,19 +1,20 @@
 <!doctype html>
 <html ng-app="j5m">
 	<head>
+		<meta charset='utf-8'> 
 		<title>Just 5 Minutes</title>
 		
 
 	</head>
-	<body ng-controller="MainCtrl" ng-switch on="currentPage">
+	<body ng-controller="Main" ng-switch on="currentPage">
 
 		<p>The food is {{spice}} spicy!</p>
 
-		<div ng-switch-when="1">
-			<p>This is page 1</p>
+		<div ng-controller="Start" ng-switch-when="Start">
+			<p>This is page Home</p>
 		</div>
-		<div ng-switch-when="2">
-			<p>This is page 2</p>
+		<div ng-switch-when="Tasks">
+			<p>This is page Tasks</p>
 			<button ng-click="changePage()">Change</button>
 		</div>
 		<div ng-switch-when="3">
@@ -23,6 +24,7 @@
 		
 		<!-- scripts -->
 		<script src="libs/angular.min.js"></script>
+		<script src="scripts/js/TaskManager.js"></script>
 		<script src="scripts/js/app.js"></script>
 	</body>
 

@@ -8,21 +8,26 @@ var greeter = new Greeter("Hello, world!");
 var str = greeter.greet();
 document.body.innerHTML = str;  */
 
-/// <reference path="../../libs/ts_definitions/angularjs/angular.d.ts" />
-angular.module('j5m.service', []);
- 
-angular.module('j5m.directives', []);
- 
-angular.module('j5m.filters', []);
- 
-angular.module('j5m', ['j5m.service', 'j5m.directives', 'j5m.filters']).
-	run(function() {
-		// This is effectively part of the main method initialization code
-	}).
-	controller("MainCtrl", function($scope){
-		$scope.currentPage = 2;
-		$scope.changePage = function()
-		{
-			$scope.currentPage = 1; 
-		}
-	});
+/// <reference path="../ts_definitions/angularjs/angular.d.ts" /> 
+/// <reference path="TaskManager.ts" /> 
+
+module j5m {
+
+	angular.module('j5m.directives', []);
+	 
+	angular.module('j5m.filters', []);
+	 
+	angular.module('j5m', ['j5m.services', 'j5m.directives', 'j5m.filters']).
+		run(function() {
+			// This is effectively part of the main method initialization code
+		}).
+		controller("Main", function($scope, TaskManager: services.TaskManager){
+			$scope.currentPage = "Tasks";
+			$scope.changePage = function() {
+				$scope.currentPage = "Start"; 
+			}
+		}).
+		controller("Start", function($scope, TaskManager: services.TaskManager){
+
+		});
+}
