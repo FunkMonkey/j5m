@@ -3,7 +3,7 @@
 	<head>
 		<meta charset='utf-8'> 
 		<title>Just 5 Minutes</title>
-		
+		<link href="styles/directives/valuerangechooser.css" rel="stylesheet"></link>
 
 	</head>
 	<body ng-controller="Main" ng-switch on="currentPage">
@@ -12,6 +12,7 @@
 
 		<div ng-controller="Start" ng-switch-when="Start">
 			<button>{{"ADD_TASK" | translate }}</button>
+			<valuerangechooser values="times" value-lower="timeMin" value-upper="timeMax"></valuerangechooser>
 			<span>{{"TAGS" | translate }}:</span>
 			<input type="edit"></input>
 		</div>
@@ -28,6 +29,8 @@
 		<script src="components/angular/angular.min.js"></script>
 		<script src="components/angular-translate/angular-translate.min.js"></script>
 		<script src="scripts/js/TaskManager.js"></script>
+		<script src="scripts/js/directives/ngScopeElement.js"></script>
+		<script src="scripts/js/directives/ValueRangeChooser.js"></script>
 		<script src="scripts/js/app.js"></script>
 	</body>
 

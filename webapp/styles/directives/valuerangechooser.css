@@ -1,0 +1,79 @@
+/* LAYOUT */
+
+valuerangechooser {
+
+}
+
+.vrc-value-labels {
+
+}
+
+.vrc-value-label {
+	float: left;
+}
+
+.vrc-value-lower {
+	clear: both;
+}
+
+
+.vrc-bar {
+	float: left;
+	position: relative;
+}
+
+.vrc-marker-lower {
+	position: absolute;
+}
+
+.vrc-marker-bar {
+	position: absolute;	
+}
+
+.vrc-marker-upper {
+	position: absolute;
+}
+
+.vrc-value-upper {
+	clear: both;
+}
+
+/* STYLING */
+
+valuerangechooser {
+
+}
+
+.vrc-value-labels {
+
+}
+
+.vrc-value-label {
+
+}
+
+.vrc-value-lower,
+.vrc-value-upper {
+
+}
+
+.vrc-bar {
+	height: 20px;
+	width: 100%;
+	background-color: #ff0000;
+}
+
+.vrc-marker-lower,
+.vrc-marker-upper {
+	background-color: #00ff00;
+	height: 10px;
+	width: 10px;
+}
+
+.vrc-marker-bar {
+	height:10px;
+	background-color: #0000ff;
+}
+
+
+
