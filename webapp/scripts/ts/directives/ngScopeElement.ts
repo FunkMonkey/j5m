@@ -5,10 +5,15 @@ module j5m {
 		angular.module("j5m.directives.ngScopeElement", []).
 			directive("ngScopeElement", function () {
 				var directiveDefinitionObject = {
+
 					restrict: "A",
 
-					link: function link(scope, iElement, iAttrs) {
-						scope[iAttrs.ngScopeElement] = iElement;
+					compile: function compile(tElement, tAttrs, transclude) {
+						return {
+								pre: function preLink(scope, iElement, iAttrs, controller) {
+									scope[iAttrs.ngScopeElement] = iElement;
+								}
+							};
 					}
 				};
 

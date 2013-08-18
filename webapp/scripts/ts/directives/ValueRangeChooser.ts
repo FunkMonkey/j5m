@@ -35,7 +35,8 @@ module j5m {
 
 					compile: function compile(tElement, tAttrs) {
 						return function postLink(scope, iElement, iAttrs) {
-							scope.markerLower[0].style.right = "70px";
+							console.log(scope);
+							scope.markerUpper[0].style.right = "70px";
 							console.log(scope.valueLower)
 							scope.values = scope.values.map( (val) => (typeof val == "number") 
 																			? { value: val, label: "" + val }

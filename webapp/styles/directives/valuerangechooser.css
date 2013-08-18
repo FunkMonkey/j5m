@@ -5,15 +5,15 @@ valuerangechooser {
 }
 
 .vrc-value-labels {
-
+	display: flex;
 }
 
 .vrc-value-label {
-	float: left;
+	flex: 1;
 }
 
 .vrc-value-lower {
-	clear: both;
+	/*clear: both;*/
 }
 
 
